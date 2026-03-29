@@ -44,6 +44,8 @@ animations = [{
 size = Vector2(15, 16)
 
 [node name="Slime" type="Node2D" unique_id=2134220724]
+light_mask = 5
+visibility_layer = 5
 script = ExtResource("1_n6pvg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1894716531]
@@ -66,7 +68,9 @@ target_position = Vector2(-11, 0)
 [node name="RayCastDownRight" type="RayCast2D" parent="." unique_id=895979471]
 position = Vector2(6, 4)
 target_position = Vector2(0, 16)
+collision_mask = 5
 
 [node name="RayCastDownLeft" type="RayCast2D" parent="." unique_id=1245672633]
 position = Vector2(-7, 3)
 target_position = Vector2(0, 17)
+collision_mask = 5

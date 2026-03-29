@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cunyhb72477oi" path="res://assets/sprites/knight.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://cv0xjph33j1dv" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Script" uid="uid://46kq3ofggyve" path="res://scripts/playerHealth.gd" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://b2jikfa8r1vq4" path="res://scripts/Player/swap_environment.gd" id="4_dqkch"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("1_3vyb7")
@@ -198,3 +199,6 @@ shape = SubResource("WorldBoundaryShape2D_g2els")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=1106237840]
 script = ExtResource("3_qhqgy")
+
+[node name="SwapEnvironment" type="Node" parent="." unique_id=1071546332]
+script = ExtResource("4_dqkch")

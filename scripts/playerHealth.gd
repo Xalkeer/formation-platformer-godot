@@ -1,14 +1,16 @@
 extends Node
 
-var Health = 3
-var MaxHealth = 3
+var current_health = 3
+var max_health = 3
 
-func testScript():
-	print("je suis bien appelé")
+signal health_changed(new_health: int)
+
 	
 func getHealth():
-	return Health
+	return current_health
 	
-func getMaxHealth():
-	return MaxHealth
-	
+
+func reducHealth(amount):
+	current_health -= amount
+	current_health = max(0, current_health) 
+	health_changed.emit(current_health)

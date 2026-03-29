@@ -1,3 +1,21 @@
 [gd_scene format=3 uid="uid://cpnj8g06bfqb3"]
 
-[node name="Sprite2D" type="Sprite2D" unique_id=821820071]
+[ext_resource type="Texture2D" uid="uid://dx7dfdrbi18l7" path="res://assets/sprites/heart.png" id="1_im0di"]
+[ext_resource type="Script" uid="uid://bt6qpxb48drgk" path="res://scripts/HUD/display_health.gd" id="1_nd070"]
+
+[node name="Node2D" type="Node2D" unique_id=1905413691]
+script = ExtResource("1_nd070")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=961617002]
+scale = Vector2(0.056, 0.05)
+texture = ExtResource("1_im0di")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1421206232]
+position = Vector2(14.999999, 0)
+scale = Vector2(0.056, 0.05)
+texture = ExtResource("1_im0di")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=958412397]
+position = Vector2(29.999998, 0)
+scale = Vector2(0.056, 0.05)
+texture = ExtResource("1_im0di")
