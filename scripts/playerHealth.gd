@@ -28,10 +28,8 @@ func reducHealth(amount, is_void_fall: bool = false):
 		
 	if current_health <= 0:
 		if is_void_fall:
-			print("Lancement de la mort dans le VIDE")
 			die_void()
 		else:
-			print("Lancement de la mort CARTOON")
 			die_cartoon()
 	else:
 		start_invincibility()
@@ -51,7 +49,6 @@ func start_invincibility():
 	if sprite:
 		sprite.modulate.a = 1.0
 
-# --- MORT CLASSIQUE (Ennemis, pics, etc.) ---
 func die_cartoon():
 	player_died.emit()
 	var player = get_parent()
@@ -83,34 +80,26 @@ func die_cartoon():
 	await move_tween.finished
 	get_tree().reload_current_scene()
 
-# --- MORT DANS LE VIDE (Tombe tout droit en rétrécissant) ---
 func die_void():
 	player_died.emit()
 	var player = get_parent()
 	is_invincible = true 
 	
-	# On arrête tout mouvement
 	player.set_physics_process(false)
 	player.set_process(false)
 	
-	# Plus de collision
 	var col = player.find_child("CollisionShape2D")
 	if col: col.set_deferred("disabled", true)
 
 	var sprite = player.get_node_or_null("AnimatedSprite2D")
 	
-	# Tween pour l'effet de profondeur (rétrécissement et transparence)
 	var visual_tween = create_tween().set_parallel(true)
 	if sprite:
 		sprite.modulate.a = 1.0
-		# Rétrécit vers le centre
 		visual_tween.tween_property(sprite, "scale", Vector2.ZERO, 1.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
-		# Devient transparent
 		visual_tween.tween_property(sprite, "modulate:a", 0.0, 1.0)
 
-	# Tween pour la chute accélérée
 	var move_tween = create_tween()
-	# Tombe très bas
 	var final_y = player.position.y + 1000 
 	
 
