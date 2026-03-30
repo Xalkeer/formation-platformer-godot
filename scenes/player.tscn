@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cv0xjph33j1dv" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Script" uid="uid://46kq3ofggyve" path="res://scripts/playerHealth.gd" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://b2jikfa8r1vq4" path="res://scripts/Player/swap_environment.gd" id="4_dqkch"]
+[ext_resource type="Texture2D" uid="uid://bfsu33qdca722" path="res://assets/sprites/puffs-of-smoke.png" id="5_qlg0r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("1_3vyb7")
@@ -176,6 +177,34 @@ radius = 5.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g2els"]
 distance = -15.0
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tuyoq"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_dqkch"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9733059, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_qlg0r"]
+curve = SubResource("Curve_dqkch")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tuyoq"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector3(-1, -0.5, 0)
+spread = 20.0
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_qlg0r")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
 [node name="Player" type="CharacterBody2D" unique_id=64235676]
 z_index = 5
 collision_layer = 2
@@ -202,3 +231,10 @@ script = ExtResource("3_qhqgy")
 
 [node name="SwapEnvironment" type="Node" parent="." unique_id=1071546332]
 script = ExtResource("4_dqkch")
+
+[node name="RunParticles" type="GPUParticles2D" parent="." unique_id=783992291]
+material = SubResource("CanvasItemMaterial_tuyoq")
+emitting = false
+texture = ExtResource("5_qlg0r")
+visibility_rect = Rect2(-100, -100, 50, 50)
+process_material = SubResource("ParticleProcessMaterial_tuyoq")
