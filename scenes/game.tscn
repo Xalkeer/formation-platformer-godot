@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ccf8v1on1qp7r" path="res://scenes/platform.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://bc0ldlcg34ffj" path="res://scenes/coin.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://q4cc8immiy75" path="res://scenes/killzone.tscn" id="5_iywne"]
+[ext_resource type="Script" uid="uid://cl0204vm4hd8w" path="res://scenes/camera_2d.gd" id="5_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://dxbhensmkfb2" path="res://scenes/slime.tscn" id="6_p57ef"]
 [ext_resource type="FontFile" uid="uid://co461neembtb2" path="res://assets/fonts/PixelOperator8.ttf" id="7_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://x8g7lb5ghako" path="res://scenes/displayCoins.tscn" id="9_0tnpc"]
@@ -425,10 +426,12 @@ tilemap_A = NodePath("../Tilemap/TileMap")
 tilemap_B = NodePath("../Tilemap/SecondFlore")
 metadata/_edit_group_ = true
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1104856679]
+[node name="Main Camera" type="Camera2D" parent="Player" unique_id=1104856679]
+unique_name_in_owner = true
 zoom = Vector2(3, 3)
 limit_bottom = 150
 position_smoothing_enabled = true
+script = ExtResource("5_kvpfn")
 
 [node name="Enemies" type="Node" parent="." unique_id=1140117852]
 
@@ -478,6 +481,7 @@ autoplay = &"move"
 
 [node name="Killzone" parent="Killzone" unique_id=1347827847 instance=ExtResource("5_iywne")]
 position = Vector2(171, 181)
+is_void = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone/Killzone" unique_id=1335191275]
 position = Vector2(4, 0)
